@@ -1,0 +1,9 @@
+numpy
+pillow
+fire
+opencv-python
+pandas
+huggingface_hub
+tqdm
+ultralytics==8.3.49
+simple-lama-inpainting
