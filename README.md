@@ -2,7 +2,7 @@
 
 This is a tool to remove or copy the speech bubbles.
 
-- Remove all speech bubbles from the image. (source image / mask / cleaned image)  
+- Remove all speech bubbles from the image. (source image / cleaned image)  
 - (As you can see from this example, not all speech bubbles can be captured completely. Or maybe the sample images aren't suitable...)  
 <img src="sample/remove1.webp" width="1024">
 <img src="sample/remove2.webp" width="1024">
@@ -34,22 +34,40 @@ run launch_cmd.bat
 # remove
 python main.py remove SRC_IMAGE_DIR_PATH
 
+#!! Create base images based on the clean images.
+#!! and put it in BASE_IMAGE_DIR with the "same file name".
+
 # copy
 python main.py copy SRC_IMAGE_DIR_PATH BASE_IMAGE_DIR_PATH
+
+
 ```
 or
 
 ```sh
-# prepare your project directory
-# my_proj_1/
+# remove
+#  prepare your project directory
+#  my_proj_1/
+#        src/ <--- put source images here
+
+
+#  with comic panel extraction
+python main.py remove_proj PROJ_DIR_PATH
+
+or
+
+#  without comic panel extraction
+python main.py remove_proj PROJ_DIR_PATH --split=False
+
+# copy
+#  prepare your project directory
+#  my_proj_1/
 #        src/ <--- put source images here
 #        base/ <--- put base images here
 
+#!! Create base images based on the clean images.
+#!! and put it in "my_proj_1/base" with the "same file name".
 
-# remove
-python main.py remove_proj PROJ_DIR_PATH
-
-# copy
 python main.py copy_proj PROJ_DIR_PATH
 ```
 
@@ -65,15 +83,22 @@ python main.py remove_proj PROJ_DIR_PATH --model_type=1
 
 # copy
 python main.py copy_proj PROJ_DIR_PATH --model_type=1
-# or
-python main.py copy_proj PROJ_DIR_PATH --model_type=1 --blend_method=1
 ```
 
-If you want to use a different model, edit YOLO_SEG_MODEL_LOCATION  
+If you want to use a different model, edit YOLO_SEG_MODEL_LOCATION(in bubble_tool.py)  
+
+
+
+## Changelog
+### 2024-12-22
+Added comic panel extraction function  
+Changed lama model  
 
 
 ## Related resources
 - [simple-lama-inpainting](https://github.com/enesmsahin/simple-lama-inpainting)
 - [yolov8m_seg-speech-bubble](https://huggingface.co/kitsumed/yolov8m_seg-speech-bubble)
+- [magi](https://github.com/ragavsachdeva/magi)
+- [AnimeMangaInpainting](https://huggingface.co/dreMaz/AnimeMangaInpainting)
 
 
