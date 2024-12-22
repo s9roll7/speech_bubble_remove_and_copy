@@ -7,3 +7,7 @@ huggingface_hub
 tqdm
 ultralytics==8.3.49
 simple-lama-inpainting
+transformers==4.43.4
+einops
+shapely
+timm
